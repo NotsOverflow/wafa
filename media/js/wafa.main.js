@@ -13,7 +13,7 @@ documentReady(function(){
 	var nfx = Nfx("somediv");
 	nfx.count = 0;
 	nfx.myTimeStamp = 0;
-	nfx.res = "360p";
+	nfx.res = "720p";
 	nfx._targetFps = 24;
 	nfx.videoInBackground = false;
 	nfx.animationsList = [];
