@@ -1,0 +1,68 @@
+/*----------------------------------------------------------------------------|
+                                                              _____           |
+      Autor: Notsgnik                                       /||   /           |
+      Email: Labruillere gmail.com                         / ||  /            |
+      website: notsgnik.github.io                         /  || /             |
+      License: GPL v3                                    /___||/              |
+      																		  |
+------------------------------------------------------------------------------*/
+
+var nfxMedias = {
+	"SPACE" : { action : "NEXTCAM" },
+	"," : { /*video : "Family Guy-Iraq Lobster - YouTube.mp4",/*/ image : "trololo.gif",  audio : "power.mp3", text : "#TROOPER", color : ["hidden","white"], fullScreen : false },
+	'A': { audio : 'Alarm.mp3', text : '#ALERT!', effect : 'flicker'} ,
+	'B': { audio: 'GTA-San Andreas.mp3', text : '#BLING', effect : 'flicker'} ,
+	'D': { audio : 'Megadeath - Duke Nukem Theme1.mp3',text : '#LETS ROCK!',effect : 'flicker'} ,
+	'E': { image : 'daleks.jpg', text :  '#EXTERMINATE', audio : 'Dalek - Exterminate! .mp3',effect : 'flicker'},
+	'T': { audio : 'Top Gear Theme Song (Jessica).mp3', text :  '#TOP 41'},
+	'P': { image : 'psycho3.jpg',text : '#!!!!', audio : 'psicose.mp3',effect : 'flicker'},
+	'C': { audio : 'nbc s community theme.mp3', text :  '#COMMUNITY', run : true},
+	'I': { audio : 'Indiana Jones Theme.mp3', text :  '#JONES'},
+	'F': { audio : 'Ylvis - The Fox (What Does the Fox Say-) [Official music video HD].mp3', text :  '#FOX'},
+	'G': { image : 'gb.jpg', audio : 'Ghostbusters.mp3'},
+	'H': { audio : 'hardstyle.mp3', text :  '#HARDSTYLE', effect : 'flicker'},
+	'L': { image :  'trololo.gif', audio : 'trololo.mp3' },
+	'U': { audio : 'IPhone_-_ofic_rington.mp3', text :  '#PHONE'},
+	'X': { audio : '01 The X-Files Main Title.mp3', text :  '#X-FILES'},
+	'N': { audio : 'facebook.mp3', text :  '#SMS'},
+	'M': { image :  'men.jpg', text :  '#MEN', audio : 'Two and a half men Season 1 to 9 Openings Official - YouTube2.mp3'},
+	'O': { audio : 'OMG WHO THE HELL CARES!.mp3', text :  '#OMG!'},
+	'Q': { image :  'trooper.jpg', text :  '#TROOPER', audio : 'power.mp3',effect : 'flicker'},
+	'Z': { image :  'megusta.jpg', audio : 'Me Gusta Song.mp3', run : true},
+	'K': { image :  'hypnotod.gif', audio : 'Hypnotoad.mp3'},
+	'$': { image :  'tardis2.png', audio : 'Doctor Who Tardis sound effects.mp3'},
+	'.': { image :  'head.gif', audio : 'wtf boom.mp3'},
+	'S': { audio : 'Sad Trombone - Sad Trombone.mp3', text :  '#OUIN'},
+	'Y': { audio : 'Help!.mp3', text :  '#HELP!',effect :  'flicker'},
+	'0': { audio : 'Panjabi - Mundian to bach ke.mp3', text :  '#POW!', run : true},
+	'9': { audio : 'Martin Garrix - Animals (Official Video).mp3', text :  '#WAFA!', effect : 'rainbow'},
+	'&': { audio : 'Epic Voice - Epic Fail.mp3', text :  '#FAIL!'},
+	'2': { audio : 'Aaaah Si Wenya!.mp3', text :  '#KINGISBORN!'},
+	'R': { audio : 'formula_one.mp3', text :  '#RACE!'},
+	'7': { audio : 'Doctor Who.mp3', text :  '#WHO!'},
+	'1': { audio : 'timmy.mp3', text :  '#TIMMEY!'},
+	'KP0': { audio : 'Sound-Effects - Crowd Laughing.mp3' },
+	'KP1': { audio : 'laughter-1.mp3' },
+	'KP2': { audio : 'laughter-2.mp3' },
+	'KP3': { audio : 'boo2.mp3' },
+	'KP4': { audio : 'audience2.mp3' },
+	'KP5': { audio : 'audience.mp3' },
+	'KP6': { audio : 'audience3.mp3' },
+	'KP7': { audio : 'ooo.mp3' },
+	'KP8': { audio : 'mmm.mp3' },
+	'KP9': { audio : 'boo.mp3'},
+	'-': { audio : 'dpt.mp3', text :  '#TECHNOLOGIC',effect : 'rainbow'},
+	'#': { audio : 'Hallelujah-Long.mp3', text :  '#OMG'},
+	'\'': { audio : 'perfect.mp3', text :  '#PERFECT'},
+	'k': { audio : 'tonnere.mp3'},
+	'f': { audio : 'boo3.mp3' },
+	'i': { audio : 'aaa.mp3' },
+	'(': { audio : 'boumtich.mp3'},
+	'%': { audio : 'XXcenturyfox.mp3', text :  '&nbsp;^ ^</br>=(\'.\' )=</br>&nbsp;&nbsp;(_&nbsp;&nbsp;_)o'},
+	'"': { audio : 'Aplodismenty - Aplodismenty.mp3'},
+	'!': { audio : '11. That Cough Came With A Prize.mp3'},
+	'b': { audio : 'audience4.mp3', 'run' : true},
+	'V': { image :  'dex.jpg', text :  '#DISSECTION', audio : '01-rolfe_kent-dexter_main_title.mp3', run : true},
+	'W': { audio : 'Dts_Effect.mp3', text :  '#PEWEW'},
+	'J': { video : 'Family Guy-Iraq Lobster - YouTube.mp4', run : true}
+};
