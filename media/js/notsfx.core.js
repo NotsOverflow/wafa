@@ -7,6 +7,11 @@
       																		  |
 ------------------------------------------------------------------------------*/
 
+navigator.getUserMedia = (navigator.getUserMedia || 
+                          navigator.webkitGetUserMedia || 
+                          navigator.mozGetUserMedia || 
+                          navigator.msGetUserMedia);
+
 var Nfx = function(element_name){
 	
 	this.verbosity = 0 ;
@@ -154,7 +159,7 @@ var Nfx = function(element_name){
 		MediaStreamTrack.getSources(this._getDeviceList);
 		//done runing this.init()
 		
-		window.setTimeout(function(){this._runInit();}, 10);
+		//window.setTimeout(function(){this._runInit();}, 10);
 		return true;
 	};
 	this._runInit = function(){
@@ -165,7 +170,7 @@ var Nfx = function(element_name){
 			this._exit();
 			return false;
 		}
-		this.debug('[ info ] ... success', 1);
+		this.debug('[ info ] ... init success', 1);
 		window.setTimeout(function(){this._runOne();}, 10);
 	};
 	this._runOne = function(){
@@ -173,7 +178,7 @@ var Nfx = function(element_name){
 		if(this._noRun == false){
 			this.debug('[ info ] first run ...');
 			if(this.run()){
-				this.debug('[ info ] ... success');
+				this.debug('[ info ] ... furst run success');
 				this.debug('[ info ] Running loop ...');
 				this._interval = window.setTimeout(function(){this._loop()}, this._loopInterval);
 				return true;
@@ -240,6 +245,7 @@ var Nfx = function(element_name){
 		if(this._videoAsked == true){return true;}
 		this._camTimeoutInterval = window.setTimeout(function(){this._cameraTimeoutFunction()}, this._cameraTimeout);
 		if (navigator.getUserMedia) {
+			this.debug('[ info ] Asking for cameras ...' );
 			for(var i in  this._videoSource){
 				navigator.getUserMedia({
 												audio: this._camAudio,
@@ -252,8 +258,11 @@ var Nfx = function(element_name){
 										   );
 		
 			}
+			this.debug('[ info ] ... Asking for cameras success' );
+			this._cameraLoaded == true;
     	}
     	else{
+			this._cameraLoaded == false;
     		this._videoSrc = [];
     	}
     	this._videoAsked = true;
@@ -282,6 +291,7 @@ var Nfx = function(element_name){
 			}
 		}
 		this.debug('[ info ] device arrays : audio / video | ' + this._audioSource +' / ' + this._videoSource,2);
+		this._runInit();
 	};
 	this._handleVideo = function(stream){
 		this._handleVideoCount = this._handleVideoCount + 1;
@@ -346,11 +356,6 @@ function snfx(main_element_id){
 	nfx._start();
 	return nfx;
 }
-
-navigator.getUserMedia = (navigator.getUserMedia || 
-                          navigator.webkitGetUserMedia || 
-                          navigator.mozGetUserMedia || 
-                          navigator.msGetUserMedia);
 
 function documentReady(someFunction){
 	if(window.attachEvent) {
