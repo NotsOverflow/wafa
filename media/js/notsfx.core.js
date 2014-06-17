@@ -89,10 +89,7 @@ var Nfx = function(element_name){
     this._windowListenerU = this._window.addEventListener('keyup',function(e) { this._keyup(e);}.bind(this),false);
     
     this._res = {"1080p" : ["1920","1080"],"720p":["1280","720"],"480p":["854","480"], '17"' : ["1280","720"], "360p" : ["640", "360"]};
-	
-	documentClose(this.exit);
-	documentClose(this._exit);
-	
+		
 	this.isPressed = function(key){
 		for (var attr in this._pressedKeys) {  
 			
@@ -154,6 +151,8 @@ var Nfx = function(element_name){
 	};
 	this._start = function(){
 		// do stuff then run this.init()
+		documentClose(this.exit);
+	    documentClose(this._exit);
 		this._recalculateDeltaTime();
 		this._setTimeStamp();
 		MediaStreamTrack.getSources(this._getDeviceList);
@@ -164,7 +163,6 @@ var Nfx = function(element_name){
 	};
 	this._runInit = function(){
 		this.debug('[ info ] Runing init ...',1);
-		documentClose(this.exit);
 		if(!this.init()){
 			this.debug('[ error ] ... error durring init ', 1 );
 			this._exit();

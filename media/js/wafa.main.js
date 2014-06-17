@@ -99,13 +99,18 @@ documentReady(function(){
 		+this._res[this.res][0]
 		+'px;height:'
 		+this._res[this.res][1]
-		+'px;background-color: #AAA;z-index:10;margin: auto;position: absolute;text-align: center;top: 0; left: 0; bottom: 0; right: 0;"></canvas>';
+		+'px;background-color: #888;z-index:10;margin: auto;position: absolute;text-align: center;top: 0; left: 0; bottom: 0; right: 0;"></canvas>';
 
 		innerHTML = innerHTML +  '<div id="nfxHolderElement" style="width:'
 		+this._res[this.res][0]
 		+'px;height:'
 		+this._res[this.res][1]
-		+'px;z-index:13;margin: auto;position: absolute;text-align: center;top: 0; left: 0; bottom: 0; right: 0;"></div>';
+		+'px;z-index:13;margin: auto;position: absolute;text-align: center;top: 0; left: 0; bottom: 0; right: 0;">'
+		+'<span id="nfxWarning" style="position: absolute;color:white;font-size:30px;font-weight:bold;width:'
+		+this._res[this.res][0]
+		+'px;align:center;left:0px;top:'
+		+((this._res[this.res][1]-30)/2)
+		+'px;">This web app need access to cameras in order to work proprely</span></div>';
 		
 		return innerHTML;
 	};
@@ -119,9 +124,10 @@ documentReady(function(){
 	};
 	nfx.videoHandler_b = function(){
 		if(this._videoSrcs == []){
-			this.mainElement.innerHTML = "the webcam is not supported";
-			this.debug('[ error ] the webcam is not supported ');
+			document.getElementById('nfxWarning').innerHTML = "Webcams are not supported! This web app need cameras to work proprely";
+			this.debug('[ error ] the webcam is not supported ',0);
 			this.exit();
+			this._exit();
 			return false;
 		}
 		this.videoElem.src = this._videoSrcs[this._currentCam];
@@ -129,6 +135,7 @@ documentReady(function(){
 		return true;
 	};
 	nfx.videoHandler_c = function(){
+		document.getElementById('nfxWarning').remove();
 		this.videoWidth = parseInt(this._getElmStyleProp(this.videoElem, "width"));
 		//this.debug('[ info ] ' + this.videoWidth, -1);
 		this.videoHeight = parseInt(this._getElmStyleProp(this.videoElem, "height"));
@@ -184,6 +191,10 @@ documentReady(function(){
 		this.debug('[ info ] runed !',3);
 		return true;
 	};
+	nfx.exit = function(){
+		document.getElementById('nfxWarning').innerHTML = "Webcams access autorisation Timeout exeded. Did you allowed " + window.location.href + " to access all webcams ?";
+	};
+	
 	nfx._start();
 
 
