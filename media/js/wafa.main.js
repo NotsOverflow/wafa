@@ -13,13 +13,14 @@ documentReady(function(){
 	var nfx = Nfx("somediv");
 	nfx.count = 0;
 	nfx.myTimeStamp = 0;
-	nfx.res = "720p";
+	nfx.res = "480p";
 	nfx._targetFps = 24;
 	nfx.videoInBackground = false;
 	nfx.animationsList = [];
 	nfx.verbosity = 1;
 	nfx.backgroundColor = "white";
 	nfx.inited = false;
+	nfx.camAudio = false;
 	
 	nfx.calculatePropWindow = function(){
 		var factors = [5,10,35,35] ;
@@ -48,7 +49,7 @@ documentReady(function(){
 		var result = [];
 		for (var attr_l in this.animationsList ){
 			//this.animationsList[attr_l].animate();
-			if(this.animationsList[attr_l].animate() && !this.animationsList[attr_l].garbage){
+			if(this.animationsList[attr_l].animate() == true && this.animationsList[attr_l].garbage == false){
 				result[attr_l] = this.animationsList[attr_l];
 			}
 			else{
@@ -77,7 +78,7 @@ documentReady(function(){
 		this.videoElem = document.getElementById('nfxVideoElement');
 		this.canvasElem = document.getElementById('nfxCanvasElement');
 		this.holderElem = document.getElementById('nfxHolderElement');
-		if(!this.inited){
+		if(this.inited == false){
 			this._getCams();
 			this.inited = true;
 		}

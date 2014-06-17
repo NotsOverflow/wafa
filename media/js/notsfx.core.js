@@ -71,6 +71,7 @@ var Nfx = function(element_name){
 	this._currentCam = 0;
 	this._currentMic = 0;
 	this._camCount = 0;
+	this._camAudio = true;
 	this._handleVideoCount = 0;
 	this._micCount = 0;
 	this._cameraLoaded = false;
@@ -236,7 +237,7 @@ var Nfx = function(element_name){
 		if (navigator.getUserMedia) {
 			for(var i in  this._videoSource){
 				navigator.getUserMedia({
-												audio: false,
+												audio: this._camAudio,
 												video: {
 													optional: [{ sourceId : this._videoSource[i][0]}]
 												}
