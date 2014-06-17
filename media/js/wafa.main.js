@@ -11,6 +11,12 @@
 documentReady(function(){
 
 	var nfx = Nfx("somediv");
+	
+	//ducktape start
+	if(nfx._getCookie("reloaded") == false){ nfx._setCookie("reloaded", true, 30); nfx._sleep(500); location.reload(true); }
+	nfx.exit = function(){this._deleteCookie("reloaded");};
+	//ducktape end
+	
 	nfx.count = 0;
 	nfx.myTimeStamp = 0;
 	nfx.res = "480p";

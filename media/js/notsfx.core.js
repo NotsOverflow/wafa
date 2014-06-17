@@ -47,10 +47,11 @@ var Nfx = function(element_name){
 		this.debug('[ info ] function tweekDown is not set and it look like it\'s needed ...',1);
 	};
 	this.exit = function(){
-		this.debug('[ info ] exiting ...', 0);
-		this._exit();
+		this.debug('[ info ] exiting is not set ...', 0);
+		//this._exit();
 	};
 	
+	this._name = element_name;
 	this._pressedKeys = {};
 	this._keyUpOrder = {};
 	this._keyDownOrder = {};
@@ -83,6 +84,9 @@ var Nfx = function(element_name){
     this._windowListenerU = this._window.addEventListener('keyup',function(e) { this._keyup(e);}.bind(this),false);
     
     this._res = {"1080p" : ["1920","1080"],"720p":["1280","720"],"480p":["854","480"], '17"' : ["1280","720"], "360p" : ["640", "360"]};
+	
+	documentClose(this.exit);
+	documentClose(this._exit);
 	
 	this.isPressed = function(key){
 		for (var attr in this._pressedKeys) {  
@@ -155,6 +159,7 @@ var Nfx = function(element_name){
 	};
 	this._runInit = function(){
 		this.debug('[ info ] Runing init ...',1);
+		documentClose(this.exit);
 		if(!this.init()){
 			this.debug('[ error ] ... error durring init ', 1 );
 			this._exit();
@@ -165,7 +170,7 @@ var Nfx = function(element_name){
 	};
 	this._runOne = function(){
 		//done doing init doing this.run()
-		if(!this._noRun){
+		if(this._noRun == false){
 			this.debug('[ info ] first run ...');
 			if(this.run()){
 				this.debug('[ info ] ... success');
@@ -183,7 +188,7 @@ var Nfx = function(element_name){
 	};
 	
 	this._loop = function(){
-		if(this._noRun){
+		if(this._noRun == true){
 			window.clearTimeout(this._interval);
 		}
 		else{
@@ -295,6 +300,27 @@ var Nfx = function(element_name){
 		this._videoSrc = false;
 	};
 	
+	this._setCookie = function (cname,cvalue,exdays) {
+		var d = new Date();
+		d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires=" + d.toGMTString();
+		document.cookie = this._name + "_" + cname+"="+cvalue+"; "+expires;
+	};
+	
+	this._deleteCookie = function (cname) {
+		document.cookie = this._name + "_" + cname+"=false; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+	};
+	
+	this._getCookie = function (cname) {
+		var name =  this._name + "_" + cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i<ca.length; i++) {
+			var c = ca[i].trim();
+			if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+		}
+		return false;
+	};
+	
 	this._getElmStyleProp = function(el,styleProp)
 	{
 		if (el.currentStyle)
@@ -336,7 +362,7 @@ function documentReady(someFunction){
 		        curronload();
 		        someFunction();
 		    };
-		    window.onload = someFunction;
+		    window.onload = newonload;
 		} else {
 		    window.onload = someFunction;
 		}
@@ -344,7 +370,18 @@ function documentReady(someFunction){
 
 }
 
-
+function documentClose(someFunction){
+	if(window.onbeforeunload) {
+		var curronload = window.onbeforeunload;
+		var newonload = function() {
+			curronload();
+			someFunction();
+		};
+		window.onbeforeunload = newonload;
+	} else {
+		window.onbeforeunload = someFunction;
+	}
+}
 
 function notsfxMerge(obj1,obj2){
     var obj3 = {};
