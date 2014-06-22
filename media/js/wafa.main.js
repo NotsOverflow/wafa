@@ -21,7 +21,7 @@ documentReady(function(){
 	nfx.verbosity = 1;
 	nfx.backgroundColor = "white";
 	nfx.inited = false;
-	nfx.camAudio = false;
+	nfx._camAudio = false;
 	
 	nfx.calculatePropWindow = function(){
 		var factors = [5,10,35,35] ;

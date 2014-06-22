@@ -24,7 +24,7 @@ var _defaultMedia = {
 	"audio" 	: false,
 	"text"  	: false,
 	"font-size" : 15,
-	"color"     : ["black","white"],
+	"color"     : ["hidden","white"],
 	"effect"    : false ,
 	"fullScreen": false
 };
