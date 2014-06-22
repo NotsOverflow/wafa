@@ -49,8 +49,8 @@ documentReady(function(){
 		}
 		var result = [];
 		for (var attr_l in this.animationsList ){
-			//this.animationsList[attr_l].animate();
-			if(this.animationsList[attr_l].animate() == true && this.animationsList[attr_l].garbage == false){
+			this.animationsList[attr_l].animate();
+			if(this.animationsList[attr_l].garbage == false){
 				result[attr_l] = this.animationsList[attr_l];
 			}
 			else{

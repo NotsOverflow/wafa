@@ -45,7 +45,7 @@ var NfxActionObject = function(nfx,key){
 	this.action = this.mtekEntry.action ;
 	
 	this.animate = function(){
-		if(!this._pressedKeys[this.associatedKey]){
+		if(this.nfx._pressedKeys[this.associatedKey] == undefined){
 			this.garbage = true;
 			return false;
 		}
