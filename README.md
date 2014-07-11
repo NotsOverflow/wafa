@@ -1,4 +1,4 @@
-notsfx
+#wafa
 ======
 
 A simple html app that allow you to bind keyborad to sounds, images and videos, like a music box just for fun
@@ -8,7 +8,9 @@ Edit media/js/wafa.mediaTable.js  ( the file is self-explanatory )
 
 - todo:
 
->  fix missdeleteing animation if 2 at the same time ( see console logs ).
+>	use the new nfx
+
+	fix missdeleteing animation if 2 at the same time ( see console logs ).
 
 >	make a virtual keyboard for portable devices.
 
